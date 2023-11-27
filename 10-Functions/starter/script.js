@@ -117,7 +117,7 @@ const greet = function (greeting) {
   };
 };
 
-// Challenge Arrow function
+// Challenge Arrow function.
 const greet2 = (greeting) => {
   return (name) => console.log(`${greeting} ${name}`);
 };
