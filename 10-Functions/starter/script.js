@@ -64,4 +64,74 @@ newPassport(jonas);
 checkIn(flight, jonas);
 
 
+
+
+// 130 Lesson Udemy - Teorie
+
+// 131 Lesson Udemy
+
+const oneWord = function (str) {
+  return str.replace(/ /g, "").toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(" ");
+  return [first.toUpperCase(), ...others].join(" ");
+};
+
+// Higher-order function
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer("JavaScript is the best!", upperFirstWord);
+
+transformer("JavaScript is the best!", oneWord);
+
+// Test Adrian
+// const high5 = function () {
+//   const imput = prompt("Ce zici fratele?");
+//   console.log(imput);
+//   alert("imput");
+// };
+
+const high5 = function () {
+  console.log("wave ~~");
+};
+
+document.body.addEventListener("click", high5);
+
+["Jonas", "Martha", "Adam"].forEach(high5);
+
+// JS uses callbacks all the time
+
 */
+
+//132 Lesson Udemy
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+// Challenge Arrow function
+const greet2 = (greeting) => {
+  return (name) => console.log(`${greeting} ${name}`);
+};
+
+// Challenge Arrow function v2
+const greet3 = (greeting) => (name) => console.log(`${greeting} ${name}`);
+
+const greeterHey = greet("Hey");
+const greeterHey2 = greet2("Hey2");
+const greeterHey3 = greet3("Hey3");
+
+greeterHey("Jonas");
+greeterHey("Steven");
+
+greet("Hello")("Jonas");
+greet2("Hello")("Jonas");
+greet3("Hello")("Jonas");
