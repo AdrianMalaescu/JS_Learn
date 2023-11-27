@@ -117,12 +117,12 @@ const greet = function (greeting) {
   };
 };
 
-// Challenge Arrow function..
+// Challenge Arrow function...
 const greet2 = (greeting) => {
   return (name) => console.log(`${greeting} ${name}`);
 };
 
-// Challenge Arrow function v2.
+// Challenge Arrow function v2..
 const greet3 = (greeting) => (name) => console.log(`${greeting} ${name}`);
 
 const greeterHey = greet("Hey");
