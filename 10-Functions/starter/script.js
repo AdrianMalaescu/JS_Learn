@@ -107,7 +107,7 @@ document.body.addEventListener("click", high5);
 
 // JS uses callbacks all the time
 
-*/
+
 
 //132 Lesson Udemy
 
@@ -131,7 +131,95 @@ const greeterHey3 = greet3("Hey3");
 
 greeterHey("Jonas");
 greeterHey("Steven");
-
 greet("Hello")("Jonas");
 greet2("Hello")("Jonas");
 greet3("Hello")("Jonas");
+
+*/
+
+// Lesson 133
+const lufthansa = {
+  airline: "lufthansa",
+  iataCode: "LH",
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode} ${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, "Jonas Schmedtmann");
+lufthansa.book(635, "John Smith");
+
+const eurowings = {
+  airline: "Eurowings",
+  iataCode: "EW",
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+// Does NOT work
+// book(23, "Sarah Williams");
+
+//Cal method
+book.call(eurowings, 23, "Sarah Williams");
+book.call(eurowings, 24, "koi");
+
+console.log(eurowings);
+
+book.call(lufthansa, 239, "Mary Cooper");
+console.log(lufthansa);
+
+const swiss = {
+  airline: "Siwss Air Lines",
+  iataCode: "LX",
+  bookings: [],
+};
+
+book.call(swiss, 583, "Mary Cooper");
+console.log(swiss);
+
+// Apply method - old
+
+const flightData = [583, "George Cooper"];
+book.apply(swiss, flightData);
+
+// new
+
+book.call(swiss, ...flightData);
+
+//  -----> Lesson 134 <-----
+
+// Bind method - bind to the flight - only call name and Flight number
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+// Bind method - bind to the flight number - > only call name
+
+// Also called "partial application"
+
+bookEW(23, "Steven Williams");
+
+const bookEW23 = book.bind(eurowings, 23);
+
+bookEW23("Jonas Schmedtmann");
+bookEW23("Martha Cooper");
+
+// With Event Listeners
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector(".buy")
+  .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
