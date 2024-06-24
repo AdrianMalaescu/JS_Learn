@@ -223,3 +223,5 @@ lufthansa.buyPlane = function () {
 document
   .querySelector(".buy")
   .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
+
+// 24 Iunie 2024
